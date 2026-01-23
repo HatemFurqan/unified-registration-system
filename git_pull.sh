@@ -8,7 +8,7 @@ REPO_PATH="/docker/furqan-shop/registration-forms/unified-registration-system"
 chmod -R 777 $REPO_PATH
 docker exec -it unified-registration-app bash -c 'git config --global --add safe.directory /var/www'
 
-# Define the path to your repository-
+# Define the path to your repository
 cd "$REPO_PATH" || exit
 echo "Project name: Unified Registration System";
 echo "Project path: $REPO_PATH";
