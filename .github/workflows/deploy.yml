@@ -1,0 +1,23 @@
+name: Auto Deploy - Registration Forms
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /docker/furqan-shop/registration-forms/unified-registration-system
+            docker exec unified-registration-app git pull --no-rebase
+            docker exec unified-registration-app composer install --ignore-platform-reqs -q --no-progress
