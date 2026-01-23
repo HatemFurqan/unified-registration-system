@@ -1,4 +1,4 @@
-name: Auto Deploy - Registration Forms
+name: Auto Deploy - Unified Registration System
 
 on:
   push:
@@ -18,6 +18,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /docker/furqan-shop/registration-forms/unified-registration-system
-            docker exec unified-registration-app git pull --no-rebase
-            docker exec unified-registration-app composer install --ignore-platform-reqs -q --no-progress
+            docker exec -w /var/www unified-registration-app git config --global --add safe.directory /var/www
+            docker exec -w /var/www unified-registration-app git pull --no-rebase
+            docker exec -w /var/www unified-registration-app composer install --ignore-platform-reqs -q --no-progress

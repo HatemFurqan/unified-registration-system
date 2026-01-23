@@ -3,7 +3,7 @@ if [ "$(id -u)" -ne 0 ]; then
     echo "This script must be run as root. Use sudo ./your_script.sh" >&2
     exit 1
 fi
-REPO_PATH="/docker/unified-registration-system"
+REPO_PATH="/docker/furqan-shop/registration-forms/unified-registration-system"
 
 chmod -R 777 $REPO_PATH
 docker exec -it unified-registration-app bash -c 'git config --global --add safe.directory /var/www'
