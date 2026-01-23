@@ -14,7 +14,7 @@ services:
     volumes:
       - ./:/var/www
       - ./local.ini:/usr/local/etc/php/conf.d/local.ini
-    networks:
+    networks: 
       - proxy
 
   nginx:
