@@ -73,8 +73,8 @@
                     WizardState.answers[answer] = true;
                 }
 
-                // Navigate to external URL
-                window.location.href = url;
+                // Navigate to external URL in new tab
+                window.open(url, '_blank');
             });
         });
 
@@ -335,7 +335,7 @@
         }
 
         if (firstPath && pathUrls[firstPath]) {
-            window.location.href = pathUrls[firstPath];
+            window.open(pathUrls[firstPath], '_blank');
         }
     }
 
