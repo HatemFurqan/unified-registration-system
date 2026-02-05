@@ -9,11 +9,21 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class HomeController extends Controller
 {
     /**
-     * Show the application home page with registration forms cards.
+     * Show the wizard page as the default home page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
+    {
+        return view('wizard');
+    }
+
+    /**
+     * Show the registration forms cards page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function forms()
     {
         // Get current locale or default to 'ar'
         $locale = app()->getLocale();

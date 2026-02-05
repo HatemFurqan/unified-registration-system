@@ -65,13 +65,15 @@ DB_PASSWORD=your_secure_password
 
 ```bash
 # تغيير ملكية الملفات
-sudo chown -R hatem:hatem /docker/unified-registration-system
+sudo chown -R hatem:hatem /docker/furqan-shop/registration-forms/unified-registration-system
 
 # إعطاء الصلاحيات
-sudo chmod -R 775 /docker/unified-registration-system
+sudo chmod -R 777 /docker/furqan-shop/registration-forms/unified-registration-system
 
 # إنشاء ملفات السجلات
-mkdir -p storage/logs/nginx
+# المسار الكامل: /docker/furqan-shop/registration-forms/unified-registration-system/storage/logs/nginx/
+cd /docker/furqan-shop/registration-forms/unified-registration-system
+sudo mkdir -p storage/logs/nginx
 sudo touch storage/logs/nginx/error.log
 sudo touch storage/logs/nginx/access.log
 sudo chmod 666 storage/logs/nginx/*.log
@@ -84,7 +86,7 @@ sudo chmod 666 storage/logs/nginx/*.log
 #### 3.1 بناء الصورة
 
 ```bash
-cd /docker/unified-registration-system
+cd /docker/furqan-shop/registration-forms/unified-registration-system
 
 # بناء الصورة
 docker compose build --no-cache
@@ -283,7 +285,7 @@ docker exec -it unified-registration-app php artisan tinker
 
 ```bash
 # إصلاح الصلاحيات
-sudo chown -R hatem:hatem /docker/unified-registration-system
+sudo chown -R hatem:hatem /docker/furqan-shop/registration-forms/unified-registration-system
 docker exec -it unified-registration-app chmod -R 775 storage bootstrap/cache
 docker exec -it unified-registration-app chown -R hatem:hatem storage bootstrap/cache
 ```

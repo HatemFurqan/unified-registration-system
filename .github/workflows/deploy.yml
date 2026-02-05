@@ -18,6 +18,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            cd /docker/furqan-shop/registration-forms/unified-registration-system
+            docker compose up -d || true
+            sleep 5
+            docker exec -w /var/www unified-registration-app bash -c 'chmod -R 775 /var/www/.git /var/www/vendor 2>/dev/null || true'
+            docker exec -w /var/www unified-registration-app bash -c 'chown -R hatem:hatem /var/www/.git /var/www/vendor 2>/dev/null || true'
             docker exec -w /var/www unified-registration-app git config --global --add safe.directory /var/www
             docker exec -w /var/www unified-registration-app git pull --no-rebase
             docker exec -w /var/www unified-registration-app composer install --ignore-platform-reqs -q --no-progress

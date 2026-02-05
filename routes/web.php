@@ -23,8 +23,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Home page - Registration Forms Selection
+// Home page - Wizard (Default)
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Forms page - Registration Forms Cards (Alternative)
+Route::get('/forms', [App\Http\Controllers\HomeController::class, 'forms'])->name('forms');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function() {
     
